@@ -10,7 +10,7 @@ export const beApi = createApi({
         headers,
         method: "post",
         url: apiConstants.auth.addNew,
-        body,
+        body: JSON.stringify(body),
       }),
     }),
     loginIn: builder.mutation({

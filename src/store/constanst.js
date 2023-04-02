@@ -1,6 +1,6 @@
 const apiConstants = {
     auth: {
-        addNew: 'users/add/',
+        addNew: 'users/add',
         loginIn: 'auth/login/'
     },
     products: {

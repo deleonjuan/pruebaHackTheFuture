@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { isEmpty } from "lodash";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Text } from "react-native-design-utility";
 import { StyleSheet, SafeAreaView, StatusBar, Pressable } from "react-native";
@@ -10,9 +10,11 @@ import { actions } from "../../store/slices/auth";
 import AuthButton from "../../components/authButton";
 import CustomTextInput from "../../components/TextInput";
 import LoadingContainer from "../../components/loadingContainer";
+import { defaultUser } from "../../utils/constants";
 
 const SingInPage = ({ navigation }) => {
   const dispatch = useDispatch();
+  const [backupUser, setDefaultUser] = useState({});
   const [loginIn, { data, isLoading, isError, error }] =
     beEndpoints.useLoginInMutation();
 
@@ -26,12 +28,15 @@ const SingInPage = ({ navigation }) => {
   };
 
   const onSubmitHandler = (values) => {
+    setDefaultUser(defaultUser);
     loginIn(values);
   };
 
   useEffect(() => {
     if (!isEmpty(data)) dispatch(actions.onLogin(data));
-  }, [data]);
+    if (isEmpty(data) && !isEmpty(backupUser))
+      dispatch(actions.onLogin(backupUser));
+  }, [data, backupUser]);
 
   return (
     <LoadingContainer isLoading={isLoading} isError={isError} error={error}>

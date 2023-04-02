@@ -1,16 +1,16 @@
 import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { Box, Text } from "react-native-design-utility";
 import { useDispatch } from "react-redux";
-import { actions } from "../../store/slices/auth";
 import Info from "./components/info";
 import ReservationsList from "./components/reservationList";
 import ButtonTransparent from "../../components/transparentButton";
+import store from "../../store";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
 
   const onLogOut = () => {
-    dispatch(actions.onLogout());
+    store.dispatch({type: "RESET"})
   };
 
   return (

@@ -2,11 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
-  token: "asdasdasd",
-  userInfo: {
-    id: 1,
-    firstName: 'jhon'
-  },
+  token: undefined,
+  userInfo: {},
 };
 
 const reducers = {
@@ -27,34 +24,18 @@ const slice = createSlice({
   reducers,
 });
 
-export const { setIsLoading, setUserInfo, setToken } = slice.actions;
+export const { setIsLoading, setUserInfo, setToken, cleanData } = slice.actions;
 // -----------------------------------
 // Actions
 // -----------------------------------
 
-
-const getUserInfo = () => async (dispatch) => {
-  dispatch(setIsLoading(true));
-};
-
 const onLogin = (data) => (dispatch) => {
-  dispatch(setIsLoading(true));
-  dispatch(setUserInfo(data))
+  dispatch(setUserInfo(data));
   dispatch(setToken(data.token));
-  dispatch(setIsLoading(false));
-};
-
-const onLogout = () => (dispatch) => {
-  dispatch(setIsLoading(true));
-  dispatch(setUserInfo({}))
-  dispatch(setToken(undefined));
-  dispatch(setIsLoading(false));
 };
 
 export const actions = {
-  getUserInfo,
   onLogin,
-  onLogout,
 };
 
 export default slice.reducer;

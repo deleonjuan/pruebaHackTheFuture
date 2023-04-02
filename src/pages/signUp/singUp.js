@@ -10,9 +10,11 @@ import { actions } from "../../store/slices/auth";
 import AuthButton from "../../components/authButton";
 import CustomTextInput from "../../components/TextInput";
 import LoadingContainer from "../../components/loadingContainer";
+import { defaultUser } from "../../utils/constants";
 
 const SingUpPage = ({ navigation }) => {
   const dispatch = useDispatch();
+  const [backupUser, setDefaultUser] = useState({});
   const [createNewUser, { data, isLoading, isError, error }] =
     beEndpoints.useCreateNewUserMutation();
   const [loginIn, { data: userData }] = beEndpoints.useLoginInMutation();
@@ -27,6 +29,7 @@ const SingUpPage = ({ navigation }) => {
     gender: "",
   };
   const onSubmitHandler = (values) => {
+    setDefaultUser(defaultUser);
     createNewUser(values);
   };
   const goToLogin = () => {
@@ -38,7 +41,8 @@ const SingUpPage = ({ navigation }) => {
 
   useEffect(() => {
     if (!isEmpty(userData)) dispatch(actions.onLogin(userData));
-    console.log("🚀 ~ file: singUp.js:41 ~ useEffect ~ userData:", userData)
+    if (isEmpty(data) && !isEmpty(backupUser))
+      dispatch(actions.onLogin(backupUser));
   }, [userData]);
   
   return (

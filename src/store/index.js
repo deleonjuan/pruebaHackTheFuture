@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { beApi } from './beApi'
-// reducers
-import authReducer from './slices/auth'
+import { persistStore } from 'redux-persist'
+import reducers from './reducers'
 
-export const store = configureStore({
-  reducer: {
-    [beApi.reducerPath]: beApi.reducer,
-    authReducer
-  },
+const store = configureStore({
+  reducer: reducers,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(beApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false
+    }).concat(beApi.middleware),
 })
+
+export const persistor = persistStore(store)
+export default store

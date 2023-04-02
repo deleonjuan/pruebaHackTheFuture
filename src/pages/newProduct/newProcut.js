@@ -27,7 +27,6 @@ const AddProductPage = () => {
 
   useEffect(() => {
     if(!isEmpty(data)) Alert.alert('Exito', 'producto creado exitosamente')
-    console.log("🚀 ~ file: newProcut.js:30 ~ useEffect ~ data:", data)
   }, [data]);
 
   return (

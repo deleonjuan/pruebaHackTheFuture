@@ -18,11 +18,7 @@ export const beApi = createApi({
         headers: { "Content-Type": "application/json" },
         method: "post",
         url: apiConstants.auth.loginIn,
-        body: JSON.stringify({
-          username: "atuny0",
-          password: "9uQFF1Lh",
-        }),
-        // body: JSON.stringify(body)
+        body: JSON.stringify(body)
       }),
     }),
     getProductList: builder.query({

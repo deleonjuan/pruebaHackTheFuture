@@ -4,7 +4,6 @@ import { beEndpoints } from "../../store/beApi";
 import { useSelector } from "react-redux";
 import CartItem from "./components/cartItem";
 import { Text } from "react-native-design-utility";
-import { useEffect } from "react";
 import CustomHeader from "../../components/header";
 import ButtonTransparent from "../../components/transparentButton";
 

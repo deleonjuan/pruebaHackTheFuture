@@ -4,6 +4,7 @@ import ProfilePage from "./profile/profile";
 import ProductDetailPage from "./productDetail/productDetailPage";
 import AddProductPage from "./newProduct/newProcut";
 import FeedPage from "./feed/FeedPage";
+import CartPage from "./cart/cartPage";
 
 export {
     SingUpPage,
@@ -11,5 +12,6 @@ export {
     ProfilePage,
     ProductDetailPage,
     AddProductPage,
-    FeedPage
+    FeedPage,
+    CartPage
 }

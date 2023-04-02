@@ -1,13 +1,23 @@
 const apiConstants = {
     auth: {
-        addNew: 'users/add',
-        loginIn: 'auth/login'
+        addNew: 'users/add/',
+        loginIn: 'auth/login/'
     },
     products: {
-        getAll: 'products/category/home-decoration',
+        getAll: 'products/category/home-decoration/',
         retrieve: 'products/',
-        addProductToCart: 'carts/add',
-        createProduct: 'products/add',
+        addProductToCart: 'carts/add/',
+        createProduct: 'products/add/',
+    },
+    todos: {
+        getAll: 'todos/',
+        update: 'todos/',
+        remove: 'todos/',
+        addNewOne: 'todos/add/',
+    },
+    cart: {
+        getCart: 'carts/',
+        removeCart: 'carts/'
     }
 }
 

@@ -39,9 +39,9 @@ const FeedPage = ({ navigation }) => {
           style={{ marginHorizontal: 5 }}
           columnWrapperStyle={styles.row}
           data={data?.products || []}
-          renderItem={(product) => (
+          renderItem={({item}) => (
             <ProductTile
-              product={product.item}
+              product={item}
               onPress={onProductCardClicked}
             />
           )}

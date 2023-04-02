@@ -30,7 +30,6 @@ const SingInPage = ({ navigation }) => {
   };
 
   useEffect(() => {
-    console.log("🚀 ~ file: singIn.js:35 ~ SingInPage ~ data:", data)
     if (!isEmpty(data)) dispatch(actions.onLogin(data));
   }, [data]);
 

@@ -44,6 +44,8 @@ const onLogin = (data) => (dispatch) => {
 
 const onLogout = () => (dispatch) => {
   dispatch(setIsLoading(true));
+  dispatch(setUserInfo({}))
+  dispatch(setToken(undefined));
   dispatch(setIsLoading(false));
 };
 

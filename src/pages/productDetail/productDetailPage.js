@@ -15,8 +15,10 @@ import LoadingContainer from "../../components/loadingContainer";
 import { beEndpoints } from "../../store/beApi";
 import AddToCartButton from "./components/addToCartButton";
 import PriceDetails from "./components/priceDetails";
+import { useSelector } from "react-redux";
 
 const ProductDetailPage = ({ route, navigation }) => {
+  const { userInfo } = useSelector((state) => state.authReducer);
   const { productId } = route.params;
   const {
     data: product,
@@ -25,24 +27,28 @@ const ProductDetailPage = ({ route, navigation }) => {
     error,
   } = beEndpoints.useGetProductQuery(productId);
 
-  const [addToCart, {data: cartData, isLoading: isCartLoading}] = beEndpoints.useAddProductToCartMutation();
+  const [addToCart, { data: cartData, isLoading: isCartLoading }] =
+    beEndpoints.useAddProductToCartMutation();
 
   const getPrice = () =>
     Math.round(product?.price + product?.discountPercentage);
 
   const onAddToCartPress = () => {
     addToCart({
-      userId: 1,
-      products: [{
-        id: product.id,
-        quantity: 1
-      }]
-    })
+      userId: userInfo.id,
+      products: [
+        {
+          id: product.id,
+          quantity: 1,
+        },
+      ],
+    });
   };
 
   useEffect(() => {
-    if(!isEmpty(cartData) && !isCartLoading) Alert.alert('Exito', 'Elemento agregado al carrito')
-  }, [cartData])
+    if (!isEmpty(cartData) && !isCartLoading)
+      Alert.alert("Exito", "Elemento agregado al carrito");
+  }, [cartData]);
 
   const Header = () => (
     <Box

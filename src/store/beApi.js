@@ -38,36 +38,91 @@ export const beApi = createApi({
     createProduct: builder.mutation({
       query: (body) => ({
         headers,
-        method: 'post',
+        method: "post",
         url: apiConstants.products.createProduct,
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       }),
     }),
     addProductToCart: builder.mutation({
       query: (body) => ({
         headers,
-        method: 'post',
+        method: "post",
         url: apiConstants.products.addProductToCart,
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+      }),
+    }),
+    getReservations: builder.mutation({
+      query: (params) => ({
+        headers,
+        url: apiConstants.todos.getAll,
+        params,
+      }),
+    }),
+    updateReservations: builder.mutation({
+      query: (todoId, body) => ({
+        headers,
+        method: "put",
+        url: `${apiConstants.todos.update}${todoId}`,
+        body: JSON.stringify(body),
+      }),
+    }),
+    removeReservations: builder.mutation({
+      query: (todoId) => ({
+        headers,
+        method: "delete",
+        url: `${apiConstants.todos.remove}${todoId}`,
+      }),
+    }),
+    addReservation: builder.mutation({
+      query: (body) => ({
+        headers,
+        method: "post",
+        url: apiConstants.todos.addNewOne,
+        body: JSON.stringify(body),
+      }),
+    }),
+    getShoppingCart: builder.query({
+      query: (todoId) => ({
+        headers,
+        url: `${apiConstants.todos.remove}${todoId}`,
+      }),
+    }),
+    removeShoppingCart: builder.mutation({
+      query: (todoId) => ({
+        headers,
+        method: "delete",
+        url: `${apiConstants.todos.remove}${todoId}`,
       }),
     }),
   }),
 });
 
 const {
+  useAddReservationMutation,
+  useGetShoppingCartQuery,
+  useRemoveShoppingCartMutation,
   useCreateNewUserMutation,
   useLoginInMutation,
   useGetProductListQuery,
   useGetProductQuery,
   useAddProductToCartMutation,
-  useCreateProductMutation
+  useCreateProductMutation,
+  useGetReservationsMutation,
+  useUpdateReservationsMutation,
+  useRemoveReservationsMutation,
 } = beApi;
 
 export const beEndpoints = {
+  useAddReservationMutation,
+  useGetShoppingCartQuery,
+  useRemoveShoppingCartMutation,
   useCreateNewUserMutation,
   useLoginInMutation,
   useGetProductListQuery,
   useGetProductQuery,
   useAddProductToCartMutation,
-  useCreateProductMutation
+  useCreateProductMutation,
+  useGetReservationsMutation,
+  useUpdateReservationsMutation,
+  useRemoveReservationsMutation,
 };

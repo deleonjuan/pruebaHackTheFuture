@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 import { Pressable } from "react-native";
 import { Box, Text } from "react-native-design-utility";
 
-const ExitButton = () => {
+const ExitButton = ({onPress}) => {
   return (
-    <Pressable hitSlop={24} style={styles.exitButtonPressable}>
+    <Pressable onPress={onPress} hitSlop={24} style={styles.exitButtonPressable}>
       <Text>salir</Text>
     </Pressable>
   );

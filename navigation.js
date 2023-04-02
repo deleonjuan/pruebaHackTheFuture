@@ -9,6 +9,7 @@ import {
   ProductDetailPage,
   AddProductPage,
   FeedPage,
+  CartPage
 } from "./src/pages";
 
 const Stack = createNativeStackNavigator();
@@ -58,6 +59,15 @@ export function BottomNavigator() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Icon name="add-outline" color={color} size={size} type="ionicon" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="cart"
+        component={CartPage}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="cart-outline" color={color} size={size} type="ionicon" />
           ),
         }}
       />

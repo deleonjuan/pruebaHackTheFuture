@@ -2,15 +2,23 @@ import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { Box, Text } from "react-native-design-utility";
 import ExitButton from "./components/exitButton";
 import Info from "./components/info";
-import ProductList from "./components/productList";
+import ReservationsList from "./components/reservationList";
+import { useDispatch } from "react-redux";
+import { actions } from "../../store/slices/auth";
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
+
+  const onLogOut = () => {
+    dispatch(actions.onLogout());
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Box f={1}>
         <Box h="30%" w="100%">
           <Box dir="row" justify="end">
-            <ExitButton />
+            <ExitButton onPress={onLogOut}/>
           </Box>
           <Box f={1} center>
             <Text fontWeight="bold" size={30}>
@@ -24,7 +32,7 @@ const ProfilePage = () => {
           </Box>
         </Box>
         <Box h="70%" w="100%">
-          <ProductList/>
+          <ReservationsList/>
         </Box>
       </Box>
     </SafeAreaView>

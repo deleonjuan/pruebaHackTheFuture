@@ -16,6 +16,7 @@ import { beEndpoints } from "../../store/beApi";
 import AddToCartButton from "./components/addToCartButton";
 import PriceDetails from "./components/priceDetails";
 import { useSelector } from "react-redux";
+import CustomHeader from "../../components/header";
 
 const ProductDetailPage = ({ route, navigation }) => {
   const { userInfo } = useSelector((state) => state.authReducer);
@@ -51,16 +52,9 @@ const ProductDetailPage = ({ route, navigation }) => {
   }, [cartData]);
 
   const Header = () => (
-    <Box
-      h="6%"
-      dir="row"
-      justify="between"
-      align="center"
-      px={12}
-      style={styles.header}
-    >
-      <GoBackButton onPress={() => navigation.goBack()} />
-    </Box>
+    <CustomHeader
+      leftSide={<GoBackButton onPress={() => navigation.goBack()} />}
+    />
   );
 
   const Information = () => (
@@ -111,10 +105,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-  },
-  header: {
-    borderBottomWidth: 1,
-    borderColor: "#ddd",
   },
   image: {
     width: "100%",

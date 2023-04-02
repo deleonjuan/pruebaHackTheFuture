@@ -15,13 +15,14 @@ export const beApi = createApi({
     }),
     loginIn: builder.mutation({
       query: (body) => ({
-        headers,
+        headers: { "Content-Type": "application/json" },
         method: "post",
         url: apiConstants.auth.loginIn,
         body: JSON.stringify({
           username: "atuny0",
           password: "9uQFF1Lh",
         }),
+        // body: JSON.stringify(body)
       }),
     }),
     getProductList: builder.query({
@@ -84,14 +85,14 @@ export const beApi = createApi({
     getShoppingCart: builder.query({
       query: (todoId) => ({
         headers,
-        url: `${apiConstants.todos.remove}${todoId}`,
+        url: `${apiConstants.cart.getCart}${todoId}`,
       }),
     }),
     removeShoppingCart: builder.mutation({
       query: (todoId) => ({
         headers,
         method: "delete",
-        url: `${apiConstants.todos.remove}${todoId}`,
+        url: `${apiConstants.cart.removeCart}${todoId}`,
       }),
     }),
   }),

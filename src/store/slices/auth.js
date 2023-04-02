@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
-  // TODO set undefined
-  token: 'asdasdasd',
-  userInfo: {},
+  token: "asdasdasd",
+  userInfo: {
+    id: 1,
+    firstName: 'jhon'
+  },
 };
 
 const reducers = {

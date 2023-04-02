@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet } from "react-native";
 import { Box, Text } from "react-native-design-utility";
 import Icon from "react-native-vector-icons/Ionicons";
+import GenericCard from "../../../components/genericCard";
 import { beEndpoints } from "../../../store/beApi";
 
 const ReservationCard = ({ reservation, loadList }) => {
@@ -10,34 +11,36 @@ const ReservationCard = ({ reservation, loadList }) => {
   const [removeTodo] = beEndpoints.useRemoveReservationsMutation();
 
   const updateTodoStatus = () => {
-    if(completed) removeTodo(todoId)
-    else updateStatus(todoId, {completed: true})
-    loadList()
-  }
+    if (completed) removeTodo(todoId);
+    else updateStatus(todoId, { completed: true });
+    loadList();
+  };
 
   return (
-    <Box bg="#eaeaea" my={6} mx={8} radius="xs" style={styles.card}>
-      <Box style={styles.headerCard}>
+    <GenericCard
+      title={
         <Text color={completed ? "green" : "#c46404"}>
           estado: {completed ? "completado" : "pendiente"}
         </Text>
-      </Box>
-      <Box dir="row" p={16}>
-        <Box w="60%">
-          <Text>{todo}</Text>
-        </Box>
+      }
+      body={
+        <Box dir="row">
+          <Box w="60%">
+            <Text>{todo}</Text>
+          </Box>
 
-        <Box w="40%" justify="end" dir="row">
-          <Pressable style={styles.toggleButton} onPress={updateTodoStatus}>
-            {completed ? (
-              <Icon name="trash-outline" />
-            ) : (
-              <Icon name="checkmark-outline" />
-            )}
-          </Pressable>
+          <Box w="40%" justify="end" dir="row">
+            <Pressable style={styles.toggleButton} onPress={updateTodoStatus}>
+              {completed ? (
+                <Icon name="trash-outline" />
+              ) : (
+                <Icon name="checkmark-outline" />
+              )}
+            </Pressable>
+          </Box>
         </Box>
-      </Box>
-    </Box>
+      }
+    />
   );
 };
 
@@ -48,16 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ccc",
     height: 30,
     justifyContent: "center",
-  },
-  headerCard: {
-    borderBottomWidth: 1,
-    borderColor: "#ddd",
-    paddingHorizontal: 16,
-    paddingVertical: 5,
-  },
-  card: {
-    borderWidth: 1,
-    borderColor: "#ddd",
   },
 });
 

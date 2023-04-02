@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import { Pressable } from "react-native";
-import { Box, Text } from "react-native-design-utility";
+import { Text } from "react-native-design-utility";
 
-const ExitButton = ({onPress}) => {
+const ButtonTransparent = ({onPress, text}) => {
   return (
     <Pressable onPress={onPress} hitSlop={24} style={styles.exitButtonPressable}>
-      <Text>salir</Text>
+      <Text>{text}</Text>
     </Pressable>
   );
 };
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExitButton;
+export default ButtonTransparent;

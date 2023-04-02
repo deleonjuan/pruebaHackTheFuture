@@ -16,7 +16,7 @@ const apiConstants = {
         addNewOne: 'todos/add/',
     },
     cart: {
-        getCart: 'carts/',
+        getCart: 'carts/user/',
         removeCart: 'carts/'
     }
 }

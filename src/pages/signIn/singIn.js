@@ -26,7 +26,7 @@ const SingInPage = ({ navigation }) => {
   };
 
   const onSubmitHandler = (values) => {
-    loginIn(JSON.stringify(values));
+    loginIn(values);
   };
 
   useEffect(() => {

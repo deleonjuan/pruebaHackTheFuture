@@ -18,16 +18,16 @@ Aplicacion movil de compra y venta de productos, con capacidad de:
 |react navigation|
 
 ## requerimientos
-npm v6.14 o superior instalado
-expo go en cualquier dispositivo
+- npm v6.14 o superior instalado
+- expo go en cualquier dispositivo
 
 ## como correr este proyecto
-`git clone https://github.com/deleonjuan/pruebaHackTheFuture`
-`npm install`
-`npm start`
+- `git clone https://github.com/deleonjuan/pruebaHackTheFuture`
+- `npm install`
+- `npm start`
 
 Abre la aplicacion `expo Go` y escanea el codigo QR que aparece en la consola
 
 ## informacion personal
-Nombre de participante: Juan Alberto De Leon Zamora
-correo: juannillo95@gmail.com
+- Nombre de participante: Juan Alberto De Leon Zamora
+- correo: juannillo95@gmail.com
